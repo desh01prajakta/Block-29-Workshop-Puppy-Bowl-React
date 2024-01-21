@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { link } from "react-router-dom";
+import { Routes, Route,Link, NavLink } from "react-router-dom";
 import home from "./component/AllPlayers";
 import player from "./component/SinglePlayer";
 import "./App.css";
@@ -9,7 +9,7 @@ function App() {
     <section>
       <div id="navbar">
         <NavLink to="/"></NavLink>
-        <link to="/home">To Home</link>
+        <Link to="/home">To Home</Link>
       </div>
       <div id="mainsection">
         <Routes>
