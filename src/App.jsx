@@ -1,21 +1,25 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Routes, Route,Link, NavLink } from "react-router-dom";
-import home from "./component/AllPlayers";
-import singlePlayer from "./component/SinglePlayer";
+import SinglePlayer from "./component/SinglePlayer";
 import "./App.css";
 import React from "react";
+import Navbar from "./component/NavBar";
+import Players from "./component/players";
 
 function App() {
   return (
     <section>
       <div id="navbar">
-        <NavLink to="/"></NavLink>
-        <Link to="/home">To Home</Link>
+        .<Navbar/>
+        {/* <NavLink to="/"></NavLink> */}
+        {/* <Link to="/home">To Home</Link> */}
       </div>
       <div id="mainsection">
+        <Players />
+        <SinglePlayer />
         <Routes>
-          <Route path="/" element={<home/>} />
-          <Route path="/players/:id" element={<singlePlayer />} />
+          <Route path="/" element={<Players/>} />
+          <Route path="/:playerInfo" element={<SinglePlayer />} />
         </Routes>
       </div>
           </section>

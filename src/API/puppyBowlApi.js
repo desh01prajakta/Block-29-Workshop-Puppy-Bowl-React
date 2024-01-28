@@ -2,7 +2,7 @@
 // from Redux Toolkit Query's React-specific entry point
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const baseUrl = "https://fsa-puppy-bowl.herokuapp.com/api/2310-fsa-pt-web/prajakta/"
+const baseUrl = "https://fsa-puppy-bowl.herokuapp.com/api/2310-fsa-pt-web/prajakta"
 
 // Define an API using createApi
 export const puppyBowlApi = createApi({
