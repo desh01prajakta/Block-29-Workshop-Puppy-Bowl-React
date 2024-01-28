@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Routes, Route,Link, NavLink } from "react-router-dom";
 import home from "./component/AllPlayers";
-import player from "./component/SinglePlayer";
+import singlePlayer from "./component/SinglePlayer";
 import "./App.css";
 import React from "react";
 
@@ -18,7 +18,7 @@ function App() {
           <Route path="/players/:id" element={<SinglePlayer />} />
         </Routes>
       </div>
-    </section>
+          </section>
   );
 }
 

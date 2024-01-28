@@ -18,7 +18,7 @@ export default function home() {
       const fetchedPlayers = await fetchPlayers();
   
       // Set the fetched players into state using setPlayers
-      setPlayers(fetchedPlayers);
+      fetchPlayers(fetchedPlayers);
   
       console.log("Players fetched and set into state:", fetchedPlayers);
     } catch (error) {
