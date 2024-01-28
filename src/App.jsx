@@ -3,6 +3,7 @@ import { Routes, Route,Link, NavLink } from "react-router-dom";
 import home from "./component/AllPlayers";
 import player from "./component/SinglePlayer";
 import "./App.css";
+import React from "react";
 
 function App() {
   return (
