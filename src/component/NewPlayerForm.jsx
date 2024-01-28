@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAddEventMutation } from "../redux"
+import { useAddPlayersMutation } from "../redux"
 
 function AddPlayerForm() {
     const [name, setName] = useState("");
@@ -7,7 +7,7 @@ function AddPlayerForm() {
     const [status, setStatus] = useState("");
     const [teamId, setTeamId] = useState("");
     const [cohortId, setCohortId] = useState("")
-    const [ addPlayer ] = useAddEventMutation()
+    const [ addPlayer ] = useAddPlayersMutation()
   
     function handleSubmit(e) {
       e.preventDefault();

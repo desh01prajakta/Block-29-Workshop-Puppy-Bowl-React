@@ -1,10 +1,10 @@
 //  Import configureStore (function to create a Redux store with good default middleware settings)
 // from Redux Toolkit
-import {configureStore} from "@reduxjs/toolkit/"
-import {puppyBowlApi} from "./API/puppyBowlApi"
+import {configureStore} from "@reduxjs/toolkit"
+import {puppyBowlApi} from "../API/puppyBowlApi"
 
 // Import the API service we defined (which includes the API endpoints and the reducer)
-import { puppyBowlApi} from "../API/puppyBowlApi"
+
 
 // Create a Redux store
 export const store = configureStore({

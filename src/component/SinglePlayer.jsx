@@ -1,10 +1,22 @@
-import { useNavigate } from "react-router-dom";
-import {useSinglePlayerQuery} from "../API/puppyBowlApi"
-import { useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+import {useGetSinglePlayerQuery} from "../API/puppyBowlApi"
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 
 export default function singlePlayer() {
-  const navigate = useNavigate();
+  const [player, setPlayer] = useState({});
+  const {playerInfo} = useParams();
+  console.log(playerInfo);
+  const{data, error, isLoading} = useGetSinglePlayerQuery(id);
+  useEffect(()=>{
+    if (data){
+      setPlayer(data)
+    }
+  },[data])
+  console.log(player?.data?.player?.id)
+  // const navigate = useNavigate();
+
     return (
       <div>
       {

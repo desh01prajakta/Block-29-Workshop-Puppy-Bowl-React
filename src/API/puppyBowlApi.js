@@ -19,6 +19,14 @@ export const puppyBowlApi = createApi({
         query:() => `/players`,
         providesTags: ['Players']
       }),
+      //define endpoint for single player
+      singlePlayer:builder.query({
+        query: (id) => ({
+          url: `/player/${id}`,
+          method: 'GET',
+        }),
+        providesTags: ['Player']
+      }),
       // Define an endpoint that fetches players
       addPlayers: builder.mutation({
         query:(body) => ({
@@ -39,7 +47,7 @@ export const puppyBowlApi = createApi({
       }),
     })
   
-  export const { useGetPlayersQuery, useAddPlayersMutation, useDeletePlayersMutation } = puppyBowlApi
+  export const { useGetPlayersQuery, useGetSinglePlayerQuery, useAddPlayersMutation, useDeletePlayersMutation } = puppyBowlApi
   // Export hooks for each endpoint - in this case, a React hook that triggers the fetchPlayers query
   
   
