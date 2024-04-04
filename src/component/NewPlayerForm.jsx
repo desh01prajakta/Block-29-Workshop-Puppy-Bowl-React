@@ -10,18 +10,25 @@ function NewPlayerForm(){
     const [breed, setBreed] = useState('')
     const [status, setStatus] = useState('bench')
     const [imageUrl, setImageUrl] = useState('');
+    const [addPuppyTeam, setAddPuppyTeam] = useState('');
+    const [addPuppyPic, setAddPuppyPic] = useState('');
 
     const handleSubmit =async  event => {
         event.preventDefault();
 
-        const response = await postPlayer({name, breed, status, imageUrl})
+        try {
+            const response = await addPlayer({ name, breed, status, imageUrl });
+            navigate(`/players/${response.data.data.newPlayer.id}`);
+        } catch (error) {
+            console.error('Error adding player:', error);
+        }   
 
         setName("")
         setBreed("")
         setImageUrl("")
         setStatus('bench')
 
-        navigate(`/players/${response.data.data.newPlayer.id}`)
+        
     }
     return(
         <div>
@@ -29,11 +36,11 @@ function NewPlayerForm(){
             <form onSubmit={handleSubmit}>
         <label>Name:
         <input 
-        value = {addPuppyName} onChange={(e) => setAddPuppyName(e.target.value)} name="name"></input>
+        value = {name} onChange={(e) => setName(e.target.value)} name="name"></input>
         </label>
         <label>Breed:
         <input 
-        value = {addPuppyBreed} onChange={(e) => setAddPuppyBreed(e.target.value)} name="breed"></input>
+        value = {breed} onChange={(e) => setBreed(e.target.value)} name="breed"></input>
         </label>
         <label>Status:
         <select value={status} onChange={(event)=>setStatus(event.target.value)}>

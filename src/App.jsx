@@ -14,9 +14,9 @@ function App() {
       <Navbar />
       <Routes>
       <Route path="/" element={<Home/>} />
-          <Route path="/" element={<Players/>} />
-          <Route path="/:playerInfo" element={<SinglePlayer />} />
-          <Route path="/AllPlayers" element={<AllPlayers />} />
+          <Route path="/players" element={<Players/>} />
+          <Route path="/singlePlayer" element={<SinglePlayer />} />
+          {/* <Route path="/AllPlayers" element={<AllPlayers />} /> */}
         
       </Routes>
           </section>

@@ -1,29 +1,29 @@
 // import { useNavigate } from "react-router-dom";
-import {useGetSinglePlayerQuery} from "../API/puppyBowlApi"
+import { useGetSinglePlayerQuery } from "../API/puppyBowlApi";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 
 export default function SinglePlayer() {
   const [player, setPlayer] = useState({});
-  const {playerInfo} = useParams();
-  console.log(playerInfo);
+  const { id } = useParams(); // Change playerInfo to id
+  console.log(id);
 
-  const{data, error, isLoading} = useGetSinglePlayerQuery(playerInfo);
+  const{data, error, isLoading} = useGetSinglePlayerQuery(id);
   
   useEffect(()=>{
     if (data){
       setPlayer(data)
     }
   },[data])
-  console.log(player?.data?.player?.id)
+  
   // const navigate = useNavigate();
   if (isLoading) {
-    <p>Loading...</p>    
-  }
+    return <section><p>Players are loading...</p></section>
+   } 
   // Show an error message if the fetch failed
   if (error) {
-    <p>Error</p>
+    return <section><p>{error.data.error.message}</p></section>
   }
     return (
       <div key={player?.data?.player?.id} className="player-card">

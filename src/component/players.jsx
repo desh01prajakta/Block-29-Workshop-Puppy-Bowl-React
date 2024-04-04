@@ -8,7 +8,8 @@ import {
   useGetPlayersQuery,
   useAddPlayersMutation,
   useDeletePlayersMutation,
-  useGetSinglePlayerQuery
+  useGetSinglePlayerQuery,
+  useGetAllPlayersQuery
  } from "../API/puppyBowlApi";
 //  import { puppyBowlApi } from "../API/puppyBowlApi";
  import { useNavigate } from "react-router-dom";
@@ -19,7 +20,7 @@ function Players () {
   // Use the generated hook to fetch data from the API
   // When the component is first rendered, it will start the API fetch
   // It will re-render each time the fetch status changes (e.g., "loading", "data arrived", "error")
-  const { data, error, isLoading } = useGetPlayersQuery();
+  const { data, error, isLoading } = useGetAllPlayersQuery();
   // const {deletePlayer} = useDeletePlayersMutation();
   // const {addPlayers} = useAddPlayersMutation();
   // const {addPuppyName, setAddPuppyName}= useState("");
@@ -42,7 +43,7 @@ function Players () {
   // }
   useEffect(()=>{
     refetch();
-  },[])
+  },[refetch])
   // Show a loading message while data is being fetched
   if (isLoading) {
     <p>Loading...</p>    
