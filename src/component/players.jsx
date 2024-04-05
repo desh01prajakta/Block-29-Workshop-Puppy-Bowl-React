@@ -1,16 +1,16 @@
 // Import the React library
 import { useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
+import PlayerCard from "./PlayerCard";
 import NewPlayerForm from "./NewPlayerForm";
+import { Navigate } from "react-router-dom";
 // import { Dispatch } from "@reduxjs/toolkit";
 // Import the generated hook from our RTK Query API slice
 import { 
   useGetPlayersQuery,
   useAddPlayersMutation,
-  useDeletePlayersMutation,
-  useGetSinglePlayerQuery,
-  useGetAllPlayersQuery
- } from "../API/puppyBowlApi";
+   useGetSinglePlayerQuery,
+   } from "../API/puppyBowlApi";
 //  import { puppyBowlApi } from "../API/puppyBowlApi";
  import { useNavigate } from "react-router-dom";
 // import "../../index.css"
@@ -20,7 +20,7 @@ function Players () {
   // Use the generated hook to fetch data from the API
   // When the component is first rendered, it will start the API fetch
   // It will re-render each time the fetch status changes (e.g., "loading", "data arrived", "error")
-  const { data, error, isLoading } = useGetAllPlayersQuery();
+  const { data, error, isLoading, refetch } = useGetPlayersQuery();
   // const {deletePlayer} = useDeletePlayersMutation();
   // const {addPlayers} = useAddPlayersMutation();
   // const {addPuppyName, setAddPuppyName}= useState("");
@@ -63,7 +63,7 @@ function Players () {
           
         {playersToDisplay && playersToDisplay.map((player) => (
         // Use the player's ID as the key for this div
-            <button className="player-card"  key={player.id} onClick={() => navigate(`/players/${player.id}`)}>
+            <button className="player-card"  key={player.id} onClick={() => Navigate(`/playerDetails/${player.id}`)}>
                 <PlayerCard  name={player.name} imageUrl={player.imageUrl}/>
             </button>
             ))}

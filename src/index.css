@@ -31,8 +31,13 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 30px;
   line-height: 1.1;
+  border: solid cadetblue;
+  background-color: cadetblue;
+  width:200px;
+  margin-left: 160px;
+  padding:10px
 }
 
 button {

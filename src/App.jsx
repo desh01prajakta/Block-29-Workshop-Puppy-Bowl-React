@@ -1,11 +1,12 @@
 // import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import SinglePlayer from "./component/SinglePlayer";
+
 import "./App.css";
 import React from "react";
+import PlayerDetails from "./component/PlayerDetails";
 import Navbar from "./component/NavBar";
 import Players from "./component/players";
-import AllPlayers from "./component/AllPlayers";
+
 import Home from "./component/Home";
 
 function App() {
@@ -13,13 +14,13 @@ function App() {
     <section>
       <Navbar />
       <Routes>
-      <Route path="/" element={<Home/>} />
-          <Route path="/players" element={<Players/>} />
-          <Route path="/singlePlayer" element={<SinglePlayer />} />
-          {/* <Route path="/AllPlayers" element={<AllPlayers />} /> */}
-        
+        <Route path="/" element={<Home />} />
+        <Route path="/players" element={<Players />} />
+        {/* <Route path="/playerDetails" element={<SinglePlayer />} /> */}
+        <Route path="/playerdetails/:id" element={<PlayerDetails />} />
+        {/* <Route path="/AllPlayers" element={<AllPlayers />} /> */}
       </Routes>
-          </section>
+    </section>
   );
 }
 

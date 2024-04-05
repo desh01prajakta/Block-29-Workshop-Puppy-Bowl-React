@@ -2,7 +2,7 @@
 // from Redux Toolkit Query's React-specific entry point
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const baseUrl = "https://fsa-puppy-bowl.herokuapp.com/api/2310-fsa-pt-web"
+const baseUrl = "https://fsa-puppy-bowl.herokuapp.com/api/2310-fsa-et-web-pt-sf-b"
 
 // Define an API using createApi
 export const puppyBowlApi = createApi({
@@ -22,19 +22,12 @@ export const puppyBowlApi = createApi({
       //define endpoint for single player
       getSinglePlayer:builder.query({
         query: (id) => ({
-          url: `/player/${id}`,
+          url: `/players/${id}`,
           method: 'GET',
         }),
         providesTags: ['Player']
       }),
-      getAllPlayers:builder.query({
-        query: () => ({
-          URL:'/players',
-          method: 'GET',
-        }),
-        providesTags: ['Players']
-      }),
-      // Define an endpoint that fetches players
+                 // Define an endpoint that fetches players
       addPlayers: builder.mutation({
         query:(body) => ({
           URL: `/players`,
@@ -42,7 +35,7 @@ export const puppyBowlApi = createApi({
           body}),
         invalidateTags: ['Players']
       }),
-      deletePlayers: builder.mutation({
+      deletePlayer: builder.mutation({
         query: (id) => ({
           URL: `/players/${id}`,
           methode: 'delete',
@@ -54,7 +47,7 @@ export const puppyBowlApi = createApi({
       }),
     })
   
-  export const { useGetPlayersQuery, useGetAllPlayersQuery, useGetSinglePlayerQuery, useAddPlayersMutation, useDeletePlayersMutation } = puppyBowlApi
+  export const { useGetPlayersQuery, useGetSinglePlayerQuery, useAddPlayersMutation, useDeletePlayerMutation, usePlayerDetailsQuery } = puppyBowlApi
   // Export hooks for each endpoint - in this case, a React hook that triggers the fetchPlayers query
   
   

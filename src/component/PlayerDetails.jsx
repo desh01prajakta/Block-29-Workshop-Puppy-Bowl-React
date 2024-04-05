@@ -1,14 +1,14 @@
-import { useGetPlayerQuery, useDeletePlayerMutation } from "../api/puppyBowlApi";
+import { useDeletePlayerMutation, useGetSinglePlayerQuery } from "../API/puppyBowlApi";
 import { useParams, Link, useNavigate } from "react-router-dom";
 //components
 import PlayerCard from "./PlayerCard";
 
 const PlayerDetails = () => {
-  const { playerId } = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
   const [deletePlayer] = useDeletePlayerMutation();
 
-  const { data = {}, error, isLoading } = useGetPlayerQuery(playerId);
+  const { data = {}, error, isLoading } = useGetSinglePlayerQuery(id);
 
  const handleDelete = async (id) => {
   await deletePlayer(id)
@@ -44,27 +44,7 @@ const PlayerDetails = () => {
           <button onClick={()=> handleDelete(player.id)}>Remove Player</button>
           <div>
             <h2>Team: {player?.team?.name || "None"}</h2>
-            {player?.team && (
-              <div className="teammates">
-                {player?.team.players.map(
-                  (teammate) =>
-                    teammate.id !== parseInt(playerId) && (
-                      <Link
-                        className="teammate"
-                        key={teammate.id}
-                        to={`/players/${teammate.id}`}
-                      >
-                        <div className="player-card">
-                          <PlayerCard
-                            name={teammate.name}
-                            imageUrl={teammate.imageUrl}
-                          />
-                        </div>
-                      </Link>
-                    )
-                )}
-              </div>
-            )}
+            
           </div>
         </div>
       )}
